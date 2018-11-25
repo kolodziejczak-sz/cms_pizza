@@ -1,0 +1,14 @@
+html, body {
+  width: 100%;
+}
+
+:root {
+  --accent-bg-color: #ccc;
+  --accent-font-color: #999;
+  --main-font-color: rgba(0,0,0,.5);
+  --main-bg-color: rgba(255,255,255,.9);
+
+  --small-font-size: 10px;
+  --normal-font-size: 14px;
+  --big-font-size: 24px;
+}

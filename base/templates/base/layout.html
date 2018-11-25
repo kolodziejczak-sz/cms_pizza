@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}Untitled{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/layout.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% block styles %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <div class="logo__icon"></div>
+        <div class="logo__brand"></div>
+      </div>
+      <navigation>
+        {% block navigation %}
+      </navigation>
+    </header>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
