@@ -1,0 +1,36 @@
+.article {
+  font-size: var(--normal-font-size);
+}
+
+.article__header {
+  box-sizing: border-box;
+  min-height: 4em;
+  padding: 1em;
+}
+
+.article__title {
+  font-size: var(--big-font-size);
+}
+
+.article__image {
+  background: var(--accent-bg-color);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.article__date {
+  font-size: var(--small-font-size);
+  font-style: italic;
+  color: var(--secondary-font-color);
+}
+
+.article__content {
+  padding: 1em;
+
+}
+
+.article__footer {
+  background: var(--accent-bg-color);
+  height: .5em;
+  width: 100%;
+}
