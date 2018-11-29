@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <title>{% block title %}Untitled{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'base/styles/reset.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'base/styles/reset.css' %}"> {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'base/styles/layout.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block styles %}{% endblock %}
@@ -14,9 +14,9 @@
       <div class="logo">
         {% block logo %}{% endblock %}
       </div>
-      <navigation class="nav header__nav">
+      <nav>
         {% block navigation %}{% endblock %}
-      </navigation>
+      </nav>
     </header>
     <main class="content">
       {% block content %}{% endblock %}

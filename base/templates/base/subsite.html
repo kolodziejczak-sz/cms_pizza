@@ -5,21 +5,14 @@
   <link rel="stylesheet" type="text/css" href="{% static 'base/styles/subsite.css' %}">
 {% endblock %}
 
-{% block title %}
-  {{ item.title }}
-{% endblock %}
-
 {% block content %}
+  {{ url }}
   <article class="article">
     <header class="article__header">
-      {% if item.image %}
-        <div class="article__image"
-            style="background-image:url('{{ item.image }}')"></div>
-      {% endif %}
       <h2 class="article__title">{{ item.title }}</h2>
       <span class="article__date">{{ item.pub_date | date:"SHORT_DATE_FORMAT" }}</span>
     </header>
-    <div class="article__content">{{ item.content }}</div>
+    <div class="article__content">{{ item.content | safe }}</div>
     <footer class="article__footer"></footer>
   </article>
 {% endblock %}

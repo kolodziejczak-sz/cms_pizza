@@ -5,6 +5,5 @@ from . import views
 app_name = 'base'
 urlpatterns = [
   path('', views.index, name='index'),
-  path('subsite', views.subsite, name='subsite'),
-  
+  path('page/<slug:url>', views.subsite, name='subsite')
 ]
