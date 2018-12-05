@@ -3,13 +3,23 @@ from datetime import datetime
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite
+from .models import Navigation, Subsite, Contact
 
 def index(request):
   return render(request, 'base/index.html', {
     'nav': get_navigation()
   })
+
+def contact(request):
+  try:
+    contact = Contact.objects.all()[:1].get()
+    return render(request, 'base/contact.html', {
+      'contact': contact
+    })
+  except ObjectDoesNotExist:
+    return render(request, 'base/contact.html')
   
+
 def subsite(request, url):
   try:
     navItem = Navigation.objects.filter(url = url)[:1].get()

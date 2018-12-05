@@ -1,6 +1,18 @@
 from django.db import models
 from datetime import date
+
 from tinymce import models as tinymce_models
+from phonenumber_field.modelfields import PhoneNumberField
+
+class Contact(models.Model):
+  telephone = PhoneNumberField(blank=True)
+  email = models.EmailField(max_length=254, blank=True)
+  city = models.CharField(max_length=200)
+  address = models.CharField(max_length=200)
+
+  def __str__(self):
+    return self.city + self.address
+
 
 class Subsite(models.Model):
   title = models.CharField(max_length=200)

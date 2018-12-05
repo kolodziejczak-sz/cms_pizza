@@ -1,0 +1,20 @@
+{% block content %}
+  {% if contact %}
+  <div class="contact">
+    <div class="contact_row">
+      <span>Telephone</span>
+      <span>{{ contact.telephone }}</span>
+    </div>
+    <div class="contact_row">
+      <span>E-mail</span>
+      <span>{{ contact.email }}</span>
+    </div>
+    <div class="contact_row">
+      <span>Address</span>
+      <span>{{ contact.address }}</span>
+    </div>
+  </div>
+  {% else %}
+    <h4>No contact data.</h4>
+  {% endif %}
+{% endblock %}
