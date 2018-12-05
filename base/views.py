@@ -3,13 +3,21 @@ from datetime import datetime
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Contact, News
+from .models import Navigation, Subsite, Contact, News, Ad
 
 def index(request):
   return render(request, 'base/index.html', {
     'nav': get_navigation()
   })
 
+def ad(request):
+  try:
+    ad = Ad.objects.all()[:1].get()
+    return render(request, 'base/ad.html', {
+      'ad': ad
+    })
+  except ObjectDoesNotExist:
+    return render(request, 'base/ad.html')
 
 def news_list(request):
   news_list = News.objects.all()

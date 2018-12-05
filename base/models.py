@@ -44,3 +44,10 @@ class Navigation(models.Model):
 
   def __str__(self):
     return self.label
+
+
+class Ad(models.Model):
+  content = tinymce_models.HTMLField()
+
+  def __str__(self):
+    return 'Ad'
