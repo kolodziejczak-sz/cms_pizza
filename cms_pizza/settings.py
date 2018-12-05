@@ -135,3 +135,12 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 
 TINYMCE_SPELLCHECKER = True
+
+PHONENUMBER_DB_FORMAT = "NATIONAL"
+PHONENUMBER_DEFAULT_REGION = "PL"
+
+
+# pip install django-phonenumber-field
+# pip install phonenumbers
+# pip install Pillow
+# pip install django-tinymce

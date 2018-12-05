@@ -1,13 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from datetime import datetime
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Contact
+from .models import Navigation, Subsite, Contact, News
 
 def index(request):
   return render(request, 'base/index.html', {
     'nav': get_navigation()
+  })
+
+
+def news_list(request):
+  news_list = News.objects.all()
+  return render(request, 'base/news_list.html', {
+    'news_list': news_list
+  })
+
+def news(request, news_id):
+  news = get_object_or_404(News, pk=question_id)
+  return render(request, 'base/news.html', {
+    'news': news
   })
 
 def contact(request):

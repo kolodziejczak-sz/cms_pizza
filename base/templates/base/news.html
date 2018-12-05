@@ -10,7 +10,7 @@
   <article class="article">
     <header class="article__header">
       <h2 class="article__title">{{ item.title }}</h2>
-      {% comment %} <span class="article__date">{{ item.pub_date | date:"SHORT_DATE_FORMAT" }}</span> {% endcomment %}
+      <span class="article__date">{{ item.pub_date | date:"SHORT_DATE_FORMAT" }}</span>
     </header>
     <div class="article__content">{{ item.content | safe }}</div>
     <footer class="article__footer"></footer>

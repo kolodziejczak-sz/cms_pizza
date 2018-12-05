@@ -1,0 +1,7 @@
+{% if news_list %}
+  <ul class="news-tile">
+    {% for news in news_list %}
+      <li class="nav__link"><a href="{% url 'base:news' news.id %}">{{ news.headline }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
