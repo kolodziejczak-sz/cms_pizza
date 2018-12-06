@@ -1,15 +1,9 @@
 from django.contrib import admin
 
-from .models import Navigation, Subsite, Contact, Ad, AppConfig
+from .models import Navigation, Subsite, Ad, AppConfig
 
 class NavigationAdmin(admin.ModelAdmin):
   list_display = ('label', 'subsite', 'url', 'sort')
-
-class ContactAdmin(admin.ModelAdmin):
-  def has_add_permission(self, request, obj=None):
-    return (Contact.objects.all().count() == 0)
-  def has_delete_permission(self, request, obj=None):
-    return (Contact.objects.all().count() == 1)
 
 class AdAdmin(admin.ModelAdmin):
   def has_add_permission(self, request, obj=None):
@@ -38,7 +32,6 @@ class AppConfigAdmin(admin.ModelAdmin):
 admin.site.register(AppConfig, AppConfigAdmin)
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Ad, AdAdmin)
-admin.site.register(Contact, ContactAdmin)
 admin.site.register(Subsite)
 
 def init_config():

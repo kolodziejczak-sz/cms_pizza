@@ -2,8 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'base'
+app_name = 'contact'
 urlpatterns = [
   path('', views.index, name='index'),
-  path('page/<slug:url>', views.subsite, name='subsite'),
 ]

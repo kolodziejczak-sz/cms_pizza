@@ -3,7 +3,7 @@ from datetime import datetime
 from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Contact, Ad, AppConfig
+from .models import Navigation, Subsite, Ad, AppConfig
 
 def index(request):
   try:
@@ -24,28 +24,6 @@ def ad(request):
     })
   except ObjectDoesNotExist:
     return render(request, 'base/ad.html')
-
-def news_list(request):
-  news_list = News.objects.all()
-  return render(request, 'base/news_list.html', {
-    'news_list': news_list
-  })
-
-def news(request, news_id):
-  news = get_object_or_404(News, pk=question_id)
-  return render(request, 'base/news.html', {
-    'news': news
-  })
-
-def contact(request):
-  try:
-    contact = Contact.objects.all()[:1].get()
-    return render(request, 'base/contact.html', {
-      'contact': contact
-    })
-  except ObjectDoesNotExist:
-    return render(request, 'base/contact.html')
-  
 
 def subsite(request, url):
   try:
