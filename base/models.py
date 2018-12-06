@@ -15,18 +15,6 @@ class Contact(models.Model):
   def __str__(self):
     return self.city + ' ' + self.address
 
-
-class News(models.Model):
-  headline = models.CharField(max_length = 200)
-  image = models.ImageField(blank = True)
-  lead_sentence = models.CharField(max_length = 600, blank = True)
-  content = tinymce_models.HTMLField()
-  pub_date = models.DateField(default = date.today)
-  
-  def __str__(self):
-    return self.headline
-
-
 class Subsite(models.Model):
   title = models.CharField(max_length = 200)
   content = tinymce_models.HTMLField()

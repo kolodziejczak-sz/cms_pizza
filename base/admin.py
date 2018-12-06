@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Navigation, Subsite, Contact, News, Ad, AppConfig
+from .models import Navigation, Subsite, Contact, Ad, AppConfig
 
 class NavigationAdmin(admin.ModelAdmin):
   list_display = ('label', 'subsite', 'url', 'sort')
@@ -40,7 +39,6 @@ admin.site.register(AppConfig, AppConfigAdmin)
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Ad, AdAdmin)
 admin.site.register(Contact, ContactAdmin)
-admin.site.register(News)
 admin.site.register(Subsite)
 
 def init_config():

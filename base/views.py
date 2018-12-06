@@ -3,7 +3,7 @@ from datetime import datetime
 from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Contact, News, Ad, AppConfig
+from .models import Navigation, Subsite, Contact, Ad, AppConfig
 
 def index(request):
   try:
