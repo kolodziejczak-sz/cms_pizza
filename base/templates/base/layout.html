@@ -4,20 +4,19 @@
 <html lang="en">
   <head>
     <title>{{ cfg.title }}</title>
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'base/styles/reset.css' %}"> {% endcomment %}
-    <styles>
+    <style>
       :root {
           --accent-color-1: {{ cfg.accent_color_1 }};
           --accent-color-2: {{ cfg.accent_color_2 }};
-          --main-color-1: {{ cfg.main_color_1 }};
-          --main-color-2: {{ cfg.main_color_2 }};
+          --text-color-1: {{ cfg.text_color_1 }};
+          --text-color-2: {{ cfg.text_color_2 }};
           --background-color: {{ cfg.background_color }};
 
           --small-font-size: {{ cfg.small_font_size }};
           --normal-font-size: {{ cfg.normal_font_size }};
           --big-font-size: {{ cfg.big_font_size }};
         }
-    </styles>
+    </style>
     <link rel="stylesheet" type="text/css" href="{% static 'base/styles/layout.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block styles %}{% endblock %}

@@ -58,24 +58,27 @@ class AppConfig(models.Model):
   title = models.CharField(max_length = 120)
   logo_image = models.ImageField(blank = True)
   logo_text =  models.CharField(max_length = 40)
-  baner = models.ImageField(blank = True)
+  baner_image = models.ImageField(blank = True)
   baner_text = tinymce_models.HTMLField(blank = True)
 
   background_color = RGBColorField()
   accent_color_1 = RGBColorField()
   accent_color_2 = RGBColorField()
-  main_color_1 = RGBColorField()
-  main_color_2 = RGBColorField()
+  text_color_1 = RGBColorField()
+  text_color_2 = RGBColorField()
 
-  small_font_size: models.IntegerField(validators=[
+  small_font_size = models.IntegerField(default=11,validators=[
     MinValueValidator(6),
     MaxValueValidator(12)
   ])
-  normal_font_size: models.IntegerField(validators=[
+  normal_font_size = models.IntegerField(default=14,validators=[
     MinValueValidator(12),
     MaxValueValidator(18)
   ])
-  big_font_size: models.IntegerField(validators=[
+  big_font_size = models.IntegerField(default=22,validators=[
     MinValueValidator(18),
     MaxValueValidator(36)
   ])
+
+  def __str__(self):
+    return 'App config'

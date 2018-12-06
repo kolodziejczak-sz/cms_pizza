@@ -15,9 +15,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'colorful',
-    'phonenumber_field',
-    'tinymce',
     'base.apps.BaseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,6 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'colorful',
+    'phonenumber_field',
+    'tinymce',
 ]
 
 MIDDLEWARE = [

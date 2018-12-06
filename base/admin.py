@@ -24,9 +24,9 @@ class AppConfigAdmin(admin.ModelAdmin):
       'title', 'logo_image', 'logo_text', 'baner_image', 'baner_text'
     ]}),
     ('Colors', {'fields': [
-      'background_color', 'accent_color_1', 'accent_color_2', 'main_color_1', 'main_color_2'
+      'background_color', 'accent_color_1', 'accent_color_2', 'text_color_1', 'text_color_2'
     ]}),
-    ('Font sizes', {'fields': [
+    ('Font sizes [px]', {'fields': [
       'big_font_size', 'normal_font_size', 'small_font_size'
     ]}),
   ]
@@ -43,23 +43,22 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(News)
 admin.site.register(Subsite)
 
-if (AppConfig.objects.all().count() == 0):
-  cfg = make_default_config()
-  cfg.save()
+def init_config():
+  if (AppConfig.objects.all().count() == 0):
+    cfg = make_default_config()
+    cfg.save()
 
 def make_default_config():
-  return Config(
+  return AppConfig(
     title = 'Unititled CMS Pizzeria',
     logo_text =  'LOGO TEXT',
-    baner_text = 'LOGO TEXT',
+    baner_text = 'BANER TEXT',
     
     background_color = '#FFFFEC',
     accent_color_1 = '#CC0000',
     accent_color_2 = '#006600',
     text_color_1 = '#6C644F',
-    text_color_2 = '#9C9178',
-
-    small_font_size = 12,
-    normal_font_size = 14,
-    big_font_size = 22
+    text_color_2 = '#9C9178'
   )
+
+init_config()

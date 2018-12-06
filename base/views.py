@@ -3,11 +3,11 @@ from datetime import datetime
 from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Contact, News, Ad
+from .models import Navigation, Subsite, Contact, News, Ad, AppConfig
 
 def index(request):
   try:
-    cfg: get_config()
+    cfg = get_config()
     return render(request, 'base/index.html', {
       'nav': get_navigation(),
       'cfg': cfg
@@ -60,4 +60,4 @@ def get_navigation():
   return Navigation.objects.order_by('sort')
 
 def get_config():
-  return Navigation.objects.all()[:1].get()
+  return AppConfig.objects.all()[:1].get()
