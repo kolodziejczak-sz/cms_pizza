@@ -3,6 +3,8 @@ from datetime import date
 
 from tinymce import models as tinymce_models
 from phonenumber_field.modelfields import PhoneNumberField
+from colorful.fields import RGBColorField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Contact(models.Model):
   telephone = PhoneNumberField(blank = True)
@@ -51,3 +53,29 @@ class Ad(models.Model):
 
   def __str__(self):
     return 'Ad'
+
+class AppConfig(models.Model):
+  title = models.CharField(max_length = 120)
+  logo_image = models.ImageField(blank = True)
+  logo_text =  models.CharField(max_length = 40)
+  baner = models.ImageField(blank = True)
+  baner_text = tinymce_models.HTMLField(blank = True)
+
+  background_color = RGBColorField()
+  accent_color_1 = RGBColorField()
+  accent_color_2 = RGBColorField()
+  main_color_1 = RGBColorField()
+  main_color_2 = RGBColorField()
+
+  small_font_size: models.IntegerField(validators=[
+    MinValueValidator(6),
+    MaxValueValidator(12)
+  ])
+  normal_font_size: models.IntegerField(validators=[
+    MinValueValidator(12),
+    MaxValueValidator(18)
+  ])
+  big_font_size: models.IntegerField(validators=[
+    MinValueValidator(18),
+    MaxValueValidator(36)
+  ])

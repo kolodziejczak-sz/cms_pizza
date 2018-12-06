@@ -13,7 +13,7 @@
 }
 
 .article__image {
-  background: var(--accent-bg-color);
+  background: var(--background-color);
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -21,7 +21,7 @@
 .article__date {
   font-size: var(--small-font-size);
   font-style: italic;
-  color: var(--secondary-font-color);
+  color: var(--main-color-1);
 }
 
 .article__content {
@@ -29,7 +29,7 @@
 }
 
 .article__footer {
-  background: var(--accent-bg-color);
+  background: var(--accent-color-1);
   height: .5em;
   width: 100%;
 }

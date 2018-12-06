@@ -1,14 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 from datetime import datetime
-from django.http import Http404
+from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Navigation, Subsite, Contact, News, Ad
 
 def index(request):
-  return render(request, 'base/index.html', {
-    'nav': get_navigation()
-  })
+  try:
+    cfg: get_config()
+    return render(request, 'base/index.html', {
+      'nav': get_navigation(),
+      'cfg': cfg
+    })
+  except ObjectDoesNotExist:
+    return HttpResponseBadRequest
+
 
 def ad(request):
   try:
@@ -52,3 +58,6 @@ def subsite(request, url):
 
 def get_navigation():
   return Navigation.objects.order_by('sort')
+
+def get_config():
+  return Navigation.objects.all()[:1].get()
