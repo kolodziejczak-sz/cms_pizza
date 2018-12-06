@@ -3,7 +3,7 @@ from datetime import datetime
 from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Navigation, Subsite, Ad, AppConfig
+from .models import Navigation, Ad, AppConfig
 
 def index(request):
   try:
@@ -24,15 +24,6 @@ def ad(request):
     })
   except ObjectDoesNotExist:
     return render(request, 'base/ad.html')
-
-def subsite(request, url):
-  try:
-    navItem = Navigation.objects.filter(url = url)[:1].get()
-    return render(request, 'base/subsite.html', {
-      'item': navItem.subsite
-    })
-  except ObjectDoesNotExist:
-    raise Http404  
 
 def get_navigation():
   return Navigation.objects.order_by('sort')

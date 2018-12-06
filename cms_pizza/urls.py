@@ -6,6 +6,7 @@ urlpatterns = [
     path('', include('base.urls')),
     path('news', include('news.urls')),
     path('contact', include('contact.urls')),
+    path('page', include('subsite.urls')),
     path(r'^tinymce/', include('tinymce.urls')),
 
 ]

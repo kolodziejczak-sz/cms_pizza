@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Navigation, Subsite, Ad, AppConfig
+from .models import Navigation, Ad, AppConfig
 
 class NavigationAdmin(admin.ModelAdmin):
   list_display = ('label', 'subsite', 'url', 'sort')
@@ -41,7 +41,6 @@ class AppConfigAdmin(admin.ModelAdmin):
 admin.site.register(AppConfig, AppConfigAdmin)
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Ad, AdAdmin)
-admin.site.register(Subsite)
 
 def init_config():
   if (AppConfig.objects.all().count() == 0):
@@ -53,7 +52,6 @@ def make_default_config():
     title = 'Unititled CMS Pizzeria',
     logo_text =  'LOGO TEXT',
     baner_text = 'BANER TEXT',
-    
     background_color = '#FFFFEC',
     accent_color_1 = '#CC0000',
     accent_color_2 = '#006600',

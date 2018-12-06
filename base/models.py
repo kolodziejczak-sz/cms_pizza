@@ -5,13 +5,7 @@ from tinymce import models as tinymce_models
 from colorful.fields import RGBColorField
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-class Subsite(models.Model):
-  title = models.CharField(max_length = 200)
-  content = tinymce_models.HTMLField()
-  pub_date = models.DateField(default = date.today)
-  
-  def __str__(self):
-    return self.title
+from subsite.models import Subsite
 
 class Navigation(models.Model):
   url = models.SlugField(max_length = 40, unique = True)

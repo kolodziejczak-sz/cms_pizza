@@ -17,6 +17,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'news.apps.NewsConfig',
+    'subsite.apps.SubsiteConfig',
     'contact.apps.ContactConfig',
     'django.contrib.admin',
     'django.contrib.auth',
