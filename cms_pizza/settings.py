@@ -114,9 +114,11 @@ STATICFILES_DIRS = [
   os.path.join(BASE_DIR, "static"),
 ]
 
+MEDIA_URL = ''
+
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,spellchecker,paste,searchreplace",
+    'plugins': "table,advimage,advlink,inlinepopups,preview,media,contextmenu,paste,visualchars,nonbreaking",
     'theme': "advanced",
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,

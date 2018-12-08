@@ -1,0 +1,25 @@
+{% extends "base/layout.html" %}
+{% load static %}
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'base/styles/base.css' %}">
+{% endblock %}
+
+{% block header %}
+  <div class="logo">
+    {% if cfg.logo_image %}
+      <img class="logo__image" src="{{cfg.logo_image.url}}"/>
+    {% endif %}
+    <span class="logo__text">
+      {{ cfg.logo_text }}
+    </span>
+  </div>
+  <ul class="nav">
+    {% for item in nav %}
+      <li class="nav__link"><a href="{% url 'subsite:index' item.url %}">{{ item.label }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block footer %}
+  <p>Pizzeria CMS by <span class="bold">s.kolodziejczak</span>.</p>
+{% endblock %}

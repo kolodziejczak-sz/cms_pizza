@@ -12,29 +12,27 @@
           --text-color-2: {{ cfg.text_color_2 }};
           --background-color: {{ cfg.background_color }};
 
-          --small-font-size: {{ cfg.small_font_size }};
-          --normal-font-size: {{ cfg.normal_font_size }};
-          --big-font-size: {{ cfg.big_font_size }};
+          --small-font-size: {{ cfg.small_font_size }}px;
+          --normal-font-size: {{ cfg.normal_font_size }}px;
+          --big-font-size: {{ cfg.big_font_size }}px;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="{% static 'base/styles/layout.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/styles/layout.css' %}">
     {% block styles %}{% endblock %}
   </head>
-  <body style="background:{{ cfg.background_color }}">
-    <header class="header">
-      <div class="logo">
-        {{ cfg.logo_text }}
-      </div>
-      <div class="banner">
-        {{ cfg.banner_text }}
-      </div>
-      <nav>
-        {% block navigation %}{% endblock %}
-      </nav>
-    </header>
-    <main class="content">
-      {% block content %}{% endblock %}
-    </main>
+  <body>
+    <div class="page" style="background:{{ cfg.background_color }}">
+      <div class="page__background" style="background-image:url('{{cfg.baner_image.url}}')"></div>
+      <header class="page__header">
+        {% block header %}{% endblock %}
+      </header>
+      <main class="page__content">
+        {% block content %}{% endblock %}
+      </main>
+      <footer class="page__footer">
+        {% block footer %}{% endblock %}
+      </footer>
+    </div>
   </body>
 </html>

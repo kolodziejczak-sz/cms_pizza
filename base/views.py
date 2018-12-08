@@ -8,7 +8,7 @@ from .utils import render
 
 def index(request):
   try:
-    return render(request, 'base/index.html')
+    return render(request, 'base/base.html')
   except ObjectDoesNotExist:
     return HttpResponseBadRequest
 
