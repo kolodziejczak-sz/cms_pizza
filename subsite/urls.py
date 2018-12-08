@@ -4,5 +4,5 @@ from . import views
 
 app_name = 'subsite'
 urlpatterns = [
-  path('<slug:url>', views.index, name='index')
+  path('/<slug:url>', views.index, name='index')
 ]

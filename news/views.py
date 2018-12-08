@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from datetime import datetime
 from django.http import Http404, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import News
+from base.utils import render
 
 def list(request):
   news_list = News.objects.all()

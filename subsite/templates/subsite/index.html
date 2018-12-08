@@ -1,0 +1,18 @@
+{% extends "base/index.html" %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'subsite/styles/subsite.css' %}">
+{% endblock %}
+
+{% block content %}
+  {{ url }}
+  <article class="article">
+    <header class="article__header">
+      <h2 class="article__title">{{ viewbag.item.title }}</h2>
+      {% comment %} <span class="article__date">{{ viewbag.item.pub_date | date:"SHORT_DATE_FORMAT" }}</span> {% endcomment %}
+    </header>
+    <div class="article__content">{{ viewbag.item.content | safe }}</div>
+    <footer class="article__footer"></footer>
+  </article>
+{% endblock %}

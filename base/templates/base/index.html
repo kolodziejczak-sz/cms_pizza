@@ -9,7 +9,7 @@
   {% if nav %}
     <ul class="nav">
       {% for item in nav %}
-        <li class="nav__link"><a href="{% url 'base:subsite' item.url %}">{{ item.label }}</a></li>
+        <li class="nav__link"><a href="{% url 'subsite:index' item.url %}">{{ item.label }}</a></li>
       {% endfor %}
     </ul>
   {% endif %}
