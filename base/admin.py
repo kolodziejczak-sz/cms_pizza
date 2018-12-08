@@ -17,10 +17,10 @@ class AdAdmin(admin.ModelAdmin):
 class AppConfigAdmin(admin.ModelAdmin):
   fieldsets = [
     ('Basic config data', {'fields': [
-      'title', 'logo_image', 'logo_text', 'baner_image', 'baner_text'
+      'title', 'logo_image', 'logo_text'
     ]}),
-    ('Colors', {'fields': [
-      'background_color', 'accent_color_1', 'accent_color_2', 'text_color_1', 'text_color_2'
+    ('Design', {'fields': [
+      'background_image','background_color', 'accent_color_1', 'accent_color_2', 'text_color_1', 'text_color_2'
     ]}),
     ('Font sizes [px]', {'fields': [
       'big_font_size', 'normal_font_size', 'small_font_size'

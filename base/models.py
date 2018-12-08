@@ -29,10 +29,9 @@ class Ad(models.Model):
 class AppConfig(models.Model):
   title = models.CharField(max_length = 120)
   logo_image = models.ImageField(blank = True, upload_to='media/config')
-  logo_text =  models.CharField(max_length = 40)
-  baner_image = models.ImageField(blank = True, upload_to='media/config')
-  baner_text = tinymce_models.HTMLField(blank = True)
+  logo_text =  models.CharField(blank = True, max_length = 40)
 
+  background_image = models.ImageField(blank = True, upload_to='media/config')
   background_color = RGBColorField()
   accent_color_1 = RGBColorField()
   accent_color_2 = RGBColorField()
