@@ -48,7 +48,7 @@ class AppConfig(models.Model):
     MinValueValidator(12),
     MaxValueValidator(18)
   ])
-  big_font_size = models.IntegerField(default=22,validators=[
+  big_font_size = models.IntegerField(default=30,validators=[
     MinValueValidator(18),
     MaxValueValidator(36)
   ])

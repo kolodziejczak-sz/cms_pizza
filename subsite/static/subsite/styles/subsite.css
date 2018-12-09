@@ -1,35 +1,28 @@
-.article {
+.subsite {
+  padding: 1em;
+  background: var(--background-color);
   font-size: var(--normal-font-size);
 }
 
-.article__header {
+.subsite__header {
   box-sizing: border-box;
-  min-height: 4em;
   padding: 1em;
 }
 
-.article__title {
+.subsite__title {
+  color: var(--accent-color-2);
   font-size: var(--big-font-size);
+  margin: 0;
 }
 
-.article__image {
-  background: var(--background-color);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.article__date {
-  font-size: var(--small-font-size);
-  font-style: italic;
-  color: var(--main-color-1);
-}
-
-.article__content {
+.subsite__content {
   padding: 1em;
 }
 
-.article__footer {
+.subsite__footer {
   background: var(--accent-color-1);
+  box-sizing: border-box; 
   height: .5em;
+  margin: 2em 1em 1em 1em;
   width: 100%;
 }

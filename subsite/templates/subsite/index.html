@@ -6,13 +6,11 @@
 {% endblock %}
 
 {% block content %}
-  {{ url }}
-  <article class="article">
-    <header class="article__header">
-      <h2 class="article__title">{{ viewbag.item.title }}</h2>
-      {% comment %} <span class="article__date">{{ viewbag.item.pub_date | date:"SHORT_DATE_FORMAT" }}</span> {% endcomment %}
+  <article class="subsite">
+    <header class="subsite__header">
+      <h2 class="subsite__title">{{ viewbag.item.title }}</h2>
     </header>
-    <div class="article__content">{{ viewbag.item.content | safe }}</div>
-    <footer class="article__footer"></footer>
+    <div class="subsite__content">{{ viewbag.item.content | safe }}</div>
+    <footer class="subsite__footer"></footer>
   </article>
 {% endblock %}

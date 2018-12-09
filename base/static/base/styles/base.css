@@ -4,6 +4,7 @@
 
 .page__header {
   padding: .5em 4em;
+  min-height: 3em;
   background: var(--accent-color-1);
 }
 
@@ -60,4 +61,5 @@
   text-transform: uppercase;
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
