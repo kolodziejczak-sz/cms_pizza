@@ -7,6 +7,12 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 from subsite.models import Subsite
 
+class Ad(models.Model):
+  content = tinymce_models.HTMLField()
+
+  def __str__(self):
+    return 'Ad'
+
 class Navigation(models.Model):
   url = models.SlugField(max_length = 40, unique = True)
   label = models.CharField(max_length = 50)
@@ -20,13 +26,6 @@ class Navigation(models.Model):
 
   def __str__(self):
     return self.label
-
-
-class Ad(models.Model):
-  content = tinymce_models.HTMLField()
-
-  def __str__(self):
-    return 'Ad'
 
 class AppConfig(models.Model):
   title = models.CharField(max_length = 120)

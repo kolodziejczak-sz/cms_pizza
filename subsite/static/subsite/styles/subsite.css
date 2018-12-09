@@ -17,9 +17,15 @@
   padding: 1em;
 }
 
+.subsite__content::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 .subsite__footer {
   background: var(--accent-color-1);
-  box-sizing: border-box; 
+  box-sizing: border-box;
   height: .5em;
   margin: 2em 1em 1em 1em;
 }

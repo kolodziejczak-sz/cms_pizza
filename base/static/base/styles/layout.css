@@ -21,16 +21,27 @@ html, body {
   display: flex;
 }
 
+.page__ad,
 .page__content {
-  padding: 2em;
-  flex: 1;
+  margin: 25px 50px;
 }
+
+.page__content {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.page__ad + .page__content {
+  margin-top: 0;
+}
+
 
 .page__footer {
   min-height: 2em;
 }
 
 .page__header,
+.page__ad,
 .page__content,
 .page__footer {
   z-index: 1;

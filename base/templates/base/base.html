@@ -11,12 +11,14 @@
     </span>
   </a>
   <nav class="nav">
-    <ul class="nav__list">
-    {% for item in nav %}
-      <li><a class="nav__link" href="{% url 'base:index' item.url %}">{{ item.label }}</a></li>
-    {% endfor %}
-    </ul>
+  {% for item in nav %}
+    <a class="nav__link" href="{% url 'base:index' item.url %}">{{ item.label }}</a>
+  {% endfor %}
   </nav>
+{% endblock %}
+
+{% block ad %}
+  {{ ad.content | safe }}
 {% endblock %}
 
 {% block footer %}

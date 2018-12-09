@@ -33,6 +33,11 @@
       <header class="page__header">
         {% block header %}{% endblock %}
       </header>
+      {% if ad %}
+        <div class="page__ad">
+          {% block ad %}{% endblock %}
+        </div>
+      {% endif %}
       <main class="page__content">
         {% block content %}{% endblock %}
       </main>
