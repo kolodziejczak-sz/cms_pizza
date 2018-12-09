@@ -13,6 +13,7 @@ def make_default_config():
     background_color = '#FFFFEC',
     accent_color_1 = '#CC0000',
     accent_color_2 = '#006600',
+    accent_color_3 = '#FFFFFF',
     text_color_1 = '#6C644F',
     text_color_2 = '#9C9178'
   )

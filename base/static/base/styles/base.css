@@ -3,6 +3,7 @@
 }
 
 .page__header {
+  padding: .5em 4em;
   background: var(--accent-color-1);
 }
 
@@ -18,4 +19,45 @@
   font-size: var(--small-font-size);
   font-style: italic;
   justify-content: center;
+}
+
+.logo,
+.nav,
+.nav__list,
+.nav__link {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.nav__list,
+.nav__link {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  color: var(--accent-color-3);
+  font-size: var(--medium-font-size);
+  font-weight: 700;
+}
+
+.logo__image + .logo__text {
+  margin-left: .25em;
+}
+
+.nav {
+  font-size: .9em;
+  margin-left: 4em;
+  color: var(--accent-color-3);
+}
+
+.nav__list {
+  list-style-type: none;
+}
+
+.nav__link {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
 }

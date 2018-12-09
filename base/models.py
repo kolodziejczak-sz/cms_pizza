@@ -10,8 +10,8 @@ from subsite.models import Subsite
 class Navigation(models.Model):
   url = models.SlugField(max_length = 40, unique = True)
   label = models.CharField(max_length = 50)
-  subsite = models.ForeignKey(Subsite, on_delete = models.DO_NOTHING)
-  sort = models.PositiveIntegerField(default = 0, blank = False, null = False)
+  subsite = models.ForeignKey(Subsite, on_delete = models.DO_NOTHING, blank = False, null = True )
+  sort = models.PositiveIntegerField(default = 0)
 
   class Meta(object):
     ordering = ['sort']
@@ -28,13 +28,15 @@ class Ad(models.Model):
 
 class AppConfig(models.Model):
   title = models.CharField(max_length = 120)
-  logo_image = models.ImageField(blank = True, upload_to='media/config')
+  favicon = models.ImageField(blank = True, upload_to='config')
+  logo_image = models.ImageField(blank = True, upload_to='config')
   logo_text =  models.CharField(blank = True, max_length = 40)
 
-  background_image = models.ImageField(blank = True, upload_to='media/config')
+  background_image = models.ImageField(blank = True, upload_to='config')
   background_color = RGBColorField()
   accent_color_1 = RGBColorField()
   accent_color_2 = RGBColorField()
+  accent_color_3 = RGBColorField()
   text_color_1 = RGBColorField()
   text_color_2 = RGBColorField()
 

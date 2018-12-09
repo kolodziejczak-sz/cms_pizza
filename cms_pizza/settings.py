@@ -114,8 +114,8 @@ STATICFILES_DIRS = [
   os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_URL = ''
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,advimage,advlink,inlinepopups,preview,media,contextmenu,paste,visualchars,nonbreaking",

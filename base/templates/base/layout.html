@@ -8,6 +8,7 @@
       :root {
           --accent-color-1: {{ cfg.accent_color_1 }};
           --accent-color-2: {{ cfg.accent_color_2 }};
+          --accent-color-3: {{ cfg.accent_color_3 }};
           --text-color-1: {{ cfg.text_color_1 }};
           --text-color-2: {{ cfg.text_color_2 }};
           --background-color: {{ cfg.background_color }};
@@ -18,7 +19,9 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'base/styles/layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/styles/base.css' %}">
     {% block styles %}{% endblock %}
   </head>
   <body>

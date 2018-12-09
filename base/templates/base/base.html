@@ -1,8 +1,5 @@
 {% extends "base/layout.html" %}
 {% load static %}
-{% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'base/styles/base.css' %}">
-{% endblock %}
 
 {% block header %}
   <div class="logo">
@@ -13,11 +10,13 @@
       {{ cfg.logo_text }}
     </span>
   </div>
-  <ul class="nav">
+  <nav class="nav">
+    <ul class="nav__list">
     {% for item in nav %}
-      <li class="nav__link"><a href="{% url 'subsite:index' item.url %}">{{ item.label }}</a></li>
+      <li><a class="nav__link" href="{% url 'subsite:index' item.url %}">{{ item.label }}</a></li>
     {% endfor %}
-  </ul>
+    </ul>
+  </nav>
 {% endblock %}
 
 {% block footer %}
