@@ -26,8 +26,10 @@
   </head>
   <body>
     <div class="page" style="background:{{ cfg.background_color }}">
-      <div class="page__background"
-           style="background-image:url('{{cfg.background_image.url}}')"></div>
+      {% if cfg.background_image %}
+        <div class="page__background"
+             style="background-image:url('{{cfg.background_image.url}}')"></div>
+      {% endif %}
       <header class="page__header">
         {% block header %}{% endblock %}
       </header>

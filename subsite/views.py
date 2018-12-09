@@ -7,7 +7,9 @@ from base.models import Navigation
 
 def index(request, url):
   try:
-    print(url)
+    if (url==""):
+      url = 'example'
+    
     navItem = Navigation.objects.filter(url = url)[:1].get()
     return render(request, 'subsite/index.html', {
       'item': navItem.subsite

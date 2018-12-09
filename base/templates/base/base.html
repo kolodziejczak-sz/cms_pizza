@@ -2,18 +2,18 @@
 {% load static %}
 
 {% block header %}
-  <div class="logo">
+  <a class="logo" href="/">
     {% if cfg.logo_image %}
       <img class="logo__image" src="{{cfg.logo_image.url}}"/>
     {% endif %}
     <span class="logo__text">
       {{ cfg.logo_text }}
     </span>
-  </div>
+  </a>
   <nav class="nav">
     <ul class="nav__list">
     {% for item in nav %}
-      <li><a class="nav__link" href="{% url 'subsite:index' item.url %}">{{ item.label }}</a></li>
+      <li><a class="nav__link" href="{% url 'base:index' item.url %}">{{ item.label }}</a></li>
     {% endfor %}
     </ul>
   </nav>

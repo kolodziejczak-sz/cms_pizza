@@ -1,6 +1,4 @@
 .subsite {
-  padding: 1em;
-  background: var(--background-color);
   font-size: var(--normal-font-size);
 }
 
@@ -24,5 +22,4 @@
   box-sizing: border-box; 
   height: .5em;
   margin: 2em 1em 1em 1em;
-  width: 100%;
 }

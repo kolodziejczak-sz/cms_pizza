@@ -10,8 +10,10 @@ from subsite.models import Subsite
 class Navigation(models.Model):
   url = models.SlugField(max_length = 40, unique = True)
   label = models.CharField(max_length = 50)
-  subsite = models.ForeignKey(Subsite, on_delete = models.DO_NOTHING, blank = False, null = True )
+  subsite = models.ForeignKey(Subsite, on_delete = models.DO_NOTHING, blank = False, null = True)
   sort = models.PositiveIntegerField(default = 0)
+  application = models.CharField(max_length = 40, blank = True)
+  visible = models.BooleanField(default = True, blank = False)
 
   class Meta(object):
     ordering = ['sort']
@@ -31,6 +33,7 @@ class AppConfig(models.Model):
   favicon = models.ImageField(blank = True, upload_to='config')
   logo_image = models.ImageField(blank = True, upload_to='config')
   logo_text =  models.CharField(blank = True, max_length = 40)
+  homepage = models.ForeignKey(Navigation, on_delete = models.DO_NOTHING, blank = False, null = True)
 
   background_image = models.ImageField(blank = True, upload_to='config')
   background_color = RGBColorField()

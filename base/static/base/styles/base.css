@@ -12,6 +12,12 @@
   background: var(--accent-color-2);
 }
 
+.page__content {
+  margin: 4em 4em;
+  padding: 1em;
+  background: var(--background-color);
+}
+
 .page__footer {
   align-items: center;
   background: var(--background-color);
@@ -41,6 +47,7 @@
   color: var(--accent-color-3);
   font-size: var(--medium-font-size);
   font-weight: 700;
+  text-decoration: none;
 }
 
 .logo__image + .logo__text {
