@@ -9,11 +9,13 @@ from .utils import render
 from contact import views as contact
 from news import views as news
 from subsite import views as subsite 
+from gallery import views as gallery 
 
 views = {
   'contact': contact,
   'news': news,
   'subsite': subsite,
+  'gallery': gallery
 }
 
 def redirectHome(request):

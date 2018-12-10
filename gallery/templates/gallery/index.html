@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'gallery/styles/gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% for photo in viewbag.photos %}
+  <figure class="photo">
+    <a target="_blank" href="{{photo.image.url}}">
+      <img class="photo__image"
+           src="{{photo.image.url}}"
+           alt="{{photo.desc}}"
+           width="300"
+           height="200">
+    </a>
+    <caption class="photo__desc">{{photo.desc}}</caption>
+  </figure>
+  {% endfor %}
+  <script src="{% static 'gallery/scripts/gallery.js' %}"></script>
+{% endblock %}

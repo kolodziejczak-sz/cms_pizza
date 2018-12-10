@@ -6,6 +6,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import News
 from base.utils import render
 
+def index(request):
+  list(request)
+
 def list(request):
   news_list = News.objects.all()
   return render(request, 'news/list.html', {

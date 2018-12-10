@@ -16,6 +16,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'base.apps.BaseConfig',
+    'gallery.apps.GalleryConfig',
     'news.apps.NewsConfig',
     'subsite.apps.SubsiteConfig',
     'contact.apps.ContactConfig',

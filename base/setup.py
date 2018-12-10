@@ -3,13 +3,13 @@ i = 0
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
-    make_nav('Home', 'home', 'contact')
-    make_nav('Contact', 'contact', 'contact')
+    make_nav('contact')
+    make_nav('gallery')
 
-def make_nav(label, url, application):
+def make_nav(application):
   item = Navigation(
-    url = url, 
-    label = label,
+    url = application, 
+    label = application.capitalize(),
     subsite = None,
     sort = i,
     application = application
@@ -23,7 +23,7 @@ def init_config():
     cfg.save()
 
 def make_default_config():
-  home = Navigation.objects.filter(url = 'home')[:1].get()
+  home = Navigation.objects.filter(url = 'contact')[:1].get()
   cfg = AppConfig(
     title = 'Unititled CMS Pizzeria',
     logo_text =  'LOGO TEXT',
