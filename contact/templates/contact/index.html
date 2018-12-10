@@ -1,22 +1,55 @@
 {% extends "base/base.html" %}
 {% load static %}
 
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'contact/styles/contact.css' %}">
+  {% if viewbag.gmap %}
+    <script>
+      latlng = {lat:{{ viewbag.contact.latitude }}, lng:{{ viewbag.contact.longitude }}};
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLezFX0jC4UwpvSgm_EB0sNT3PxokfXhQ"></script>    
+  {% endif %}
+{% endblock %}
+
 {% block content %}
-  {% if contact %}
-  <div class="contact">
-    <div class="contact_row">
-      <span>Telephone</span>
-      <span>{{ contact.telephone }}</span>
+  {% if viewbag.contact %}
+
+    {% if viewbag.contact %}
+      <div id="gmap"></div>
+    {% endif %}
+    <div class="row">
+      <form class="message" id="message-form">
+        <div class="message__alert" id="message-alert"></div>
+        <input id="message-email" class="message__input" placeholder="Email" type="email" required/>
+        <input id="message-subject" class="message__input" placeholder="Subject" required/>
+        <textarea id="message-message" class="message__textarea" placeholder="Message..." rows="10" required></textarea>
+        <button class="message__submit">Submit</button>
+      </form>
+      <div class="contact">
+        <div class="contact__row">
+          <span class="contact__icon">location_on</span>
+          <div class="contact__text">
+            <span class="bold">{{ viewbag.contact.name }}</span>
+            <span>{{ viewbag.contact.city }}, {{ viewbag.contact.address }}</span>
+          </div>
+        </div>
+        <div class="contact__row">
+          <span class="contact__icon">email</span>
+          <span class="contact__text">{{ viewbag.contact.email }}</span>
+        </div>
+        <div class="contact__row">
+          <span class="contact__icon">phone</span>
+          <span class="contact__text">{{ viewbag.contact.telephone }}</span>
+        </div>
+      </div>
     </div>
-    <div class="contact_row">
-      <span>E-mail</span>
-      <span>{{ contact.email }}</span>
-    </div>
-    <div class="contact_row">
-      <span>Address</span>
-      <span>{{ contact.address }}</span>
-    </div>
-  </div>
+    <script>
+      csrf_token = "{{ csrf_token }}";
+    </script>
+    <script src="{% static 'contact/scripts/form.js' %}"></script>
+    {% if viewbag.gmap %}
+      <script src="{% static 'contact/scripts/gmap.js' %}"></script>
+    {% endif %}
   {% else %}
     <h4>No contact data.</h4>
   {% endif %}

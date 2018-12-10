@@ -1,0 +1,88 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+#gmap {
+  height: 20em;
+  margin: 1em;
+}
+
+.message,
+.contact {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.contact {
+  padding-left: 4em;
+}
+
+.contact__row {
+  align-items: center;
+  display: flex;
+  margin: 1em 0;
+}
+
+.contact__icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 3em;
+}
+
+.contact__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  padding: 1em;
+}
+
+.message__alert:not(:empty) {
+  padding: .5em;
+  margin-bottom: .5em;
+  background: var(--accent-color-2);
+  color: var(--accent-color-3);
+}
+
+.message__input,
+.message__textarea,
+.message__submit {
+  color: var(--text-color-1);
+  margin-bottom: 1em;
+  padding: .5em;
+  border: 1px solid var(--text-color-2);
+  outline: 0;
+}
+
+.message__textarea {
+  resize: none;
+}
+
+.message__submit {
+  color: var(--accent-color-3);
+  background: var(--accent-color-2);
+  border: 0;
+  cursor: pointer;
+}
+
+.message__input:focus,
+.message__textarea:focus {
+  border: 1px solid var(--accent-color-2);
+}
+.message__submit:hover {
+  background: var(--accent-color-1);
+}

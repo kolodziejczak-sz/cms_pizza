@@ -1,23 +1,21 @@
 from .models import Navigation, Ad, AppConfig
+i = 0
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
-    home = Navigation(
-      url = 'home',
-      label = 'Home',
-      subsite = None,
-      sort = 0,
-      application = 'contact'
-    )
-    contact = Navigation(
-      url = 'contact',
-      label = 'Contact',
-      subsite = None,
-      sort = 1,
-      application = 'contact'
-    )
-    home.save()
-    contact.save()
+    make_nav('Home', 'home', 'contact')
+    make_nav('Contact', 'contact', 'contact')
+
+def make_nav(label, url, application):
+  item = Navigation(
+    url = url, 
+    label = label,
+    subsite = None,
+    sort = i,
+    application = application
+  )
+  item.save()
+  i = i + 1
 
 def init_config():
   if (AppConfig.objects.all().count() == 0):
