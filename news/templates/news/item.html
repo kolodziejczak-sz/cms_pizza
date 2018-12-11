@@ -2,8 +2,23 @@
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/news.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/item.css' %}">
 {% endblock %}
 
 {% block content %}
+  <article class="news">
+    <header class="news__header">
+      <h4 class="news__headline">{{ viewbag.news.headline }}</h4>
+      <span class="news__date">{{ viewbag.news.pub_date }}</span>
+    </header>
+    <section class="news__leads">{{ viewbag.news.lead_sentence }}</section>
+    <section class="news__content">
+      {% if viewbag.news.image %}
+        <img class="news__image" src="{{ viewbag.news.image.url }}"/>
+      {% else %}
+        <img class="news__image" src="../../media/news/no_photo.jpg"/>
+      {% endif %}
+      {{ viewbag.news.content | safe }}
+    </section>
+  </article>
 {% endblock %}

@@ -2,33 +2,42 @@
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/news.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/list.css' %}">
 {% endblock %}
 
 {% block content %}
   {% if viewbag.news_list %}
-    <ul class="news_list">
+    <ul class="list">
       {% for news in viewbag.news_list %}
       <li class="news">
-        <a class="news__image news__link" href="{% url 'base:index' 'news' news.id %}">
-          {% if news.image %}
-            <img src="{{ news.image }}"/>
-          {% else %}
-            <img src="media/news/no_photo.jpg"/>
-          {% endif %}
-        </a>
         <div class="news__intro">
           <h4 class="news__headline">
             <a class="news__link" href="{% url 'base:index' 'news' news.id %}">{{ news.headline }}</a>
+            <span class="news__date">{{ news.pub_date }}</span>
           </h4>
-          <h4 class="news__date">{{ news.pub_date }}</h4>
           <div class="news__leads">{{ news.lead_sentence }}</div>
         </div>
+        <a class="news__figure news__link" href="{% url 'base:index' 'news' news.id %}">
+          {% if news.image %}
+            <img class="news__image" src="{{ news.image.url }}"/>
+          {% else %}
+            <img class="news__image" src="../media/news/no_photo.jpg"/>
+          {% endif %}
+        </a>
       </li>
       {% endfor %}
     </ul>
   {% else %}
     <h3 class="alert">No news to show</h3>
   {% endif %}
-
+  {% if pages_count > 1 %}
+    <div class="pagination">
+      {% for i in viewbag.pages_range %}
+        <a class="pagination__link {% if i == viewbag.current_page %}pagination__link-active{% endif %}"
+          href="{% url 'base:index' 'news' %}?p={{i}}">
+        {{ i }}
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endblock %}
