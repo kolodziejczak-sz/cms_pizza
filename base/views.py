@@ -8,14 +8,16 @@ from .utils import render
 
 from contact import views as contact
 from news import views as news
-from subsite import views as subsite 
-from gallery import views as gallery 
+from subsite import views as subsite
+from gallery import views as gallery
+from menu import views as menu
 
 views = {
   'contact': contact,
   'news': news,
   'subsite': subsite,
-  'gallery': gallery
+  'gallery': gallery,
+  'menu': menu
 }
 
 def redirectHome(request):
