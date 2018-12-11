@@ -3,7 +3,7 @@ from datetime import date
 
 class Photo(models.Model):
   image = models.ImageField(upload_to='gallery')
-  description = models.TextField(blank = True, max_length=1000)
+  description = models.TextField(blank = True, max_length=100)
   pub_date = models.DateField(default = date.today)
   
   def __str__(self):

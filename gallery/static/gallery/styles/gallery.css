@@ -1,0 +1,21 @@
+.gallery {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.photo {
+  flex: 1 0 calc(33% - 3em);
+  box-sizing: border-box;
+  margin: 1em;
+}
+
+.photo__image {
+  width: 100%;
+  height: auto;
+}
+
+.photo__desc {
+  text-align: center;
+}

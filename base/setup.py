@@ -1,21 +1,21 @@
 from .models import Navigation, Ad, AppConfig
-i = 0
+from gallery.models import Photo
+
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
-    make_nav('contact')
-    make_nav('gallery')
+    make_nav('contact',1)
+    make_nav('gallery',2)
 
-def make_nav(application):
+def make_nav(application, sort):
   item = Navigation(
     url = application, 
     label = application.capitalize(),
     subsite = None,
-    sort = i,
+    sort = sort,
     application = application
   )
   item.save()
-  i = i + 1
 
 def init_config():
   if (AppConfig.objects.all().count() == 0):
@@ -42,5 +42,30 @@ def make_default_config():
 def init():
   #AppConfig.objects.all().delete()
   #Navigation.objects.all().delete()
+  #Photo.objects.all().delete()
+  init_photo()
   init_nav()
   init_config()
+
+
+desc = [
+  "Sed ut perspiciatis unde omnis iste natus error",
+  "quae ab illo inventore veritatis et quasi architecto",
+  "aspernatur aut odit aut fugit",
+  "est, qui dolorem ipsum quia dolor sit amet",
+  "et dolore magnam aliquam quaerat voluptatem",
+  "nisi ut aliquid ex ea commodi consequatur",
+  "aspernatur aut odit aut fugit",
+  "est, qui dolorem ipsum quia dolor sit amet"
+]
+
+def init_photo():
+  if (Photo.objects.all().count() == 0):
+    for i in range(0, 8):
+      make_photo('gallery/pizza'+str(i+1)+'.jpg', desc[i])
+
+
+def make_photo(url, desc):
+  photo = Photo(image = url, description = desc)
+  photo.save()
+
