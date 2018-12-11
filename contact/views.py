@@ -8,7 +8,7 @@ import json
 from base.utils import render
 from .models import Contact, Message
 
-def index(request):
+def index(request, param = None):
   try:
     contact = Contact.objects.all()[:1].get()
     gmap = (contact.latitude and contact.longitude)

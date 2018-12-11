@@ -1,18 +1,9 @@
-{% extends "base/index.html" %}
+{% extends "base/base.html" %}
 {% load static %}
 
 {% block styles %}
-  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/subsite.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/news.css' %}">
 {% endblock %}
 
 {% block content %}
-  {{ url }}
-  <article class="article">
-    <header class="article__header">
-      <h2 class="article__title">{{ item.title }}</h2>
-      <span class="article__date">{{ item.pub_date | date:"SHORT_DATE_FORMAT" }}</span>
-    </header>
-    <div class="article__content">{{ item.content | safe }}</div>
-    <footer class="article__footer"></footer>
-  </article>
 {% endblock %}

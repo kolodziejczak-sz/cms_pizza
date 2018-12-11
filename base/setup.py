@@ -4,8 +4,10 @@ from gallery.models import Photo
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
-    make_nav('contact',1)
-    make_nav('gallery',2)
+    #make_nav('home',1)
+    make_nav('news',2)
+    make_nav('gallery',3)
+    make_nav('contact',4)
 
 def make_nav(application, sort):
   item = Navigation(
@@ -16,6 +18,7 @@ def make_nav(application, sort):
     application = application
   )
   item.save()
+
 
 def init_config():
   if (AppConfig.objects.all().count() == 0):
@@ -30,7 +33,7 @@ def make_default_config():
     homepage = home,
     background_color = '#FFFFEC',
     accent_color_1 = '#CC0000',
-    accent_color_2 = '#006600',
+    accent_color_2 = '#51AA51',
     accent_color_3 = '#FFFFFF',
     text_color_1 = '#6C644F',
     text_color_2 = '#9C9178'

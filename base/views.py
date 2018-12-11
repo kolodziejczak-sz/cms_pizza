@@ -22,11 +22,11 @@ def redirectHome(request):
   config = AppConfig.objects.all()[:1].get()
   return redirect('/page/' + config.homepage.url)
 
-def index(request, url):
+def index(request, url, param = None):
   try:
     link = Navigation.objects.filter(visible = True, url = url)[:1].get()
     if(link.subsite is None):
-      return views[link.application].index(request)
+      return views[link.application].index(request, param)
     else:
       return render(request, 'subsite/index.html', {
         'item': link.subsite

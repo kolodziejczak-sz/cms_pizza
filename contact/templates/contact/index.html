@@ -19,7 +19,7 @@
     {% endif %}
     <div class="row">
       <form class="message" id="message-form">
-        <div class="message__alert" id="message-alert"></div>
+        <div class="alert" id="message-alert"></div>
         <input id="message-email" class="message__input" placeholder="Email" type="email" required/>
         <input id="message-subject" class="message__input" placeholder="Subject" required/>
         <textarea id="message-message" class="message__textarea" placeholder="Message..." rows="10" required></textarea>
@@ -51,6 +51,6 @@
       <script src="{% static 'contact/scripts/gmap.js' %}"></script>
     {% endif %}
   {% else %}
-    <h4>No contact data.</h4>
+    <h3 class="alert">No contact data.</h3>
   {% endif %}
 {% endblock %}

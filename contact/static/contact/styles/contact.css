@@ -51,13 +51,6 @@
   padding: 1em;
 }
 
-.message__alert:not(:empty) {
-  padding: .5em;
-  margin-bottom: .5em;
-  background: var(--accent-color-2);
-  color: var(--accent-color-3);
-}
-
 .message__input,
 .message__textarea,
 .message__submit {

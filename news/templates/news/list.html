@@ -1,7 +1,34 @@
-{% if news_list %}
-  <ul class="news-tile">
-    {% for news in news_list %}
-      <li class="nav__link"><a href="{% url 'news:item' news.id %}">{{ news.headline }}</a></li>
-    {% endfor %}
-  </ul>
-{% endif %}
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'news/styles/news.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% if viewbag.news_list %}
+    <ul class="news_list">
+      {% for news in viewbag.news_list %}
+      <li class="news">
+        <a class="news__image news__link" href="{% url 'base:index' 'news' news.id %}">
+          {% if news.image %}
+            <img src="{{ news.image }}"/>
+          {% else %}
+            <img src="media/news/no_photo.jpg"/>
+          {% endif %}
+        </a>
+        <div class="news__intro">
+          <h4 class="news__headline">
+            <a class="news__link" href="{% url 'base:index' 'news' news.id %}">{{ news.headline }}</a>
+          </h4>
+          <h4 class="news__date">{{ news.pub_date }}</h4>
+          <div class="news__leads">{{ news.lead_sentence }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h3 class="alert">No news to show</h3>
+  {% endif %}
+
+{% endblock %}
