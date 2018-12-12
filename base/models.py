@@ -16,7 +16,7 @@ class Ad(models.Model):
 class Navigation(models.Model):
   url = models.SlugField(max_length = 40, unique = True)
   label = models.CharField(max_length = 50)
-  subsite = models.ForeignKey(Subsite, on_delete = models.DO_NOTHING, blank = False, null = True)
+  subsite = models.ForeignKey(Subsite, on_delete = models.CASCADE, blank = False, null = True)
   sort = models.PositiveIntegerField(default = 0)
   application = models.CharField(max_length = 40, blank = True)
   visible = models.BooleanField(default = True, blank = False)

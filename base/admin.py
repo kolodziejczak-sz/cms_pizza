@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .setup import init
+from cms_pizza.setup import init
 
 from .models import Navigation, Ad, AppConfig
 
