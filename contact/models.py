@@ -2,9 +2,9 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 class Contact(models.Model):
-  name = models.CharField(max_length = 200, blank = True)
+  name = models.CharField(max_length = 200)
   telephone = PhoneNumberField(blank = True)
-  email = models.EmailField(max_length = 254, blank = True)
+  email = models.EmailField(max_length = 254)
   city = models.CharField(max_length = 200)
   address = models.CharField(max_length = 200)
   latitude = models.DecimalField(blank = True, max_digits=9, decimal_places=6, null = True)

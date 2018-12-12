@@ -1,6 +1,4 @@
 from .models import Navigation, Ad, AppConfig
-from gallery.models import Photo
-
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
@@ -42,33 +40,15 @@ def make_default_config():
   cfg.background_image = 'config/background.jpg'
   return cfg
 
-def init():
-  #AppConfig.objects.all().delete()
-  #Navigation.objects.all().delete()
-  #Photo.objects.all().delete()
-  init_photo()
+def clear_nav():
+  Navigation.objects.all().delete()
+
+def clear_config():
+  AppConfig.objects.all().delete()
+
+def init(clear = False):
+  if clear:
+    clear_config()
+    clear_nav()
   init_nav()
   init_config()
-
-
-desc = [
-  "Sed ut perspiciatis unde omnis iste natus error",
-  "quae ab illo inventore veritatis et quasi architecto",
-  "aspernatur aut odit aut fugit",
-  "est, qui dolorem ipsum quia dolor sit amet",
-  "et dolore magnam aliquam quaerat voluptatem",
-  "nisi ut aliquid ex ea commodi consequatur",
-  "aspernatur aut odit aut fugit",
-  "est, qui dolorem ipsum quia dolor sit amet"
-]
-
-def init_photo():
-  if (Photo.objects.all().count() == 0):
-    for i in range(0, 8):
-      make_photo('gallery/pizza'+str(i+1)+'.jpg', desc[i])
-
-
-def make_photo(url, desc):
-  photo = Photo(image = url, description = desc)
-  photo.save()
-

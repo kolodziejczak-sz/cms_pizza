@@ -37,10 +37,12 @@
           <span class="contact__icon">email</span>
           <span class="contact__text">{{ viewbag.contact.email }}</span>
         </div>
-        <div class="contact__row">
-          <span class="contact__icon">phone</span>
-          <span class="contact__text">{{ viewbag.contact.telephone }}</span>
-        </div>
+        {% if viewbag.contact.telephone %}
+          <div class="contact__row">
+            <span class="contact__icon">phone</span>
+            <span class="contact__text">{{ viewbag.contact.telephone }}</span>
+          </div>
+        {% endif %}
       </div>
     </div>
     <script>
