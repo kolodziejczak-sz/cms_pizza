@@ -33,7 +33,6 @@ class AppConfig(models.Model):
   logo_image = models.ImageField(blank = True, upload_to = 'config')
   logo_text =  models.CharField(blank = True, max_length = 40)
   homepage = models.ForeignKey(Navigation, on_delete = models.DO_NOTHING, blank = False, null = True)
-  currency_label = models.CharField(default = '$', max_length = 10)
 
   background_image = models.ImageField(blank = True, upload_to = 'config')
   background_color = RGBColorField()

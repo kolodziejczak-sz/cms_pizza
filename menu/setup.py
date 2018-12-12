@@ -1,4 +1,4 @@
-from .models import Product, Ingredient, Price, Category, Size
+from .models import MenuConfig, Product, Ingredient, Price, Category, Size
 
 class AttrDict(dict):
   def __init__(self, *args, **kwargs):
@@ -116,12 +116,18 @@ def make_products_all(categories):
   pizza = make_product_pizza(categories)
   drinks = make_product_drink(categories)
 
+def make_config():
+  cfg = MenuConfig(currency_label = '$')
+  cfg.save()
+
 def make_menu():
+  config = make_config()
   categories = make_categories()
   sizes = make_sizes(categories)
   make_products_all(categories)
 
 def clear_all():
+  MenuConfig.objects.all().delete()
   Size.objects.all().delete()
   Price.objects.all().delete()
   Ingredient.objects.all().delete()
@@ -131,5 +137,5 @@ def clear_all():
 def init(clear = False):
   if clear:
     clear_all()
-  if (Category.objects.all().count() == 0):
+  if (MenuConfig.objects.all().count() == 0):
     make_menu()

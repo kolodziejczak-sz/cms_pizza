@@ -1,6 +1,15 @@
 from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from tinymce import models as tinymce_models
+
+class MenuConfig(models.Model):
+  currency_label = models.CharField(default = '$', max_length = 10)
+  menu_header = tinymce_models.HTMLField()
+  menu_footer = tinymce_models.HTMLField()
+
+  def __str__(self):
+    return 'Menu config'
 
 class Category(models.Model):
   category_label = models.CharField(max_length = 100)

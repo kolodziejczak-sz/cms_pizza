@@ -1,8 +1,8 @@
 from .models import Navigation, Ad, AppConfig
-make_nav('menu',1)
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
+    make_nav('menu',1)
     make_nav('news',2)
     make_nav('gallery',3)
     make_nav('contact',4)
