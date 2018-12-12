@@ -3,10 +3,14 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from cms_pizza.setup import init
 
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
+
 from .models import Navigation, Ad, AppConfig
 
 class NavigationAdmin(admin.ModelAdmin):
   list_display = ('label', 'subsite', 'application', 'url', 'sort', 'visible')
+  list_editable = ['sort', 'visible']
   
   def has_delete_permission(self, request, obj=None):
     if(obj and obj.subsite is None):
@@ -35,7 +39,7 @@ class AdAdmin(admin.ModelAdmin):
 class AppConfigAdmin(admin.ModelAdmin):
   fieldsets = [
     ('Basic config data', {'fields': [
-      'title', 'logo_image', 'logo_text', 'favicon', 'homepage'
+      'title', 'logo_image', 'logo_text', 'favicon', 'homepage', 'currency_label'
     ]}),
     ('Design', {'fields': [
       'background_image','background_color', 'accent_color_1', 'accent_color_2', 'accent_color_3', 'text_color_1', 'text_color_2'
@@ -61,3 +65,6 @@ init()
 admin.site.register(AppConfig, AppConfigAdmin)
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Ad, AdAdmin)
+
+admin.site.unregister(User)
+admin.site.unregister(Group)

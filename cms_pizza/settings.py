@@ -15,12 +15,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'base.apps.BaseConfig',
-    'menu.apps.MenuConfig',
-    'gallery.apps.GalleryConfig',
-    'news.apps.NewsConfig',
-    'subsite.apps.SubsiteConfig',
-    'contact.apps.ContactConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,6 +24,12 @@ INSTALLED_APPS = [
     'colorful',
     'phonenumber_field',
     'tinymce',
+    'base.apps.BaseConfig',
+    'menu.apps.MenuConfig',
+    'gallery.apps.GalleryConfig',
+    'news.apps.NewsConfig',
+    'subsite.apps.SubsiteConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [

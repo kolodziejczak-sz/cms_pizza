@@ -29,12 +29,13 @@ class Navigation(models.Model):
 
 class AppConfig(models.Model):
   title = models.CharField(max_length = 120)
-  favicon = models.ImageField(blank = True, upload_to='config')
-  logo_image = models.ImageField(blank = True, upload_to='config')
+  favicon = models.ImageField(blank = True, upload_to = 'config')
+  logo_image = models.ImageField(blank = True, upload_to = 'config')
   logo_text =  models.CharField(blank = True, max_length = 40)
   homepage = models.ForeignKey(Navigation, on_delete = models.DO_NOTHING, blank = False, null = True)
+  currency_label = models.CharField(default = '$', max_length = 10)
 
-  background_image = models.ImageField(blank = True, upload_to='config')
+  background_image = models.ImageField(blank = True, upload_to = 'config')
   background_color = RGBColorField()
   accent_color_1 = RGBColorField()
   accent_color_2 = RGBColorField()

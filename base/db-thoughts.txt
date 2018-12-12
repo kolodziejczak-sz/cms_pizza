@@ -1,0 +1,34 @@
+category
+  -id
+  -category_label
+
+size:
+  -id
+  -category_id
+  -size_label
+
+product:
+  -id
+  -category_id
+  -product_label
+
+ingredient:
+  -id
+  -product_id
+
+price:
+  -id
+  -product_id
+  -size_id
+  -amount,
+  -currency
+
+
+
+opening hours
+
+range:
+  weekday_start_label,
+  weekday_end_label
+  hour_start_label,
+  hour_end_label

@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date
 
 class Photo(models.Model):
-  image = models.ImageField(upload_to='gallery')
+  image = models.ImageField(upload_to = 'gallery')
   description = models.TextField(blank = True, max_length=100)
   pub_date = models.DateField(default = date.today)
   
