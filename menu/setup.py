@@ -136,6 +136,8 @@ def clear_all():
 
 def init(clear = False):
   if clear:
+    #return True
     clear_all()
   if (MenuConfig.objects.all().count() == 0):
+    #return True
     make_menu()

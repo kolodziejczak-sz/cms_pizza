@@ -1,7 +1,47 @@
 from django.contrib import admin
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import MenuConfig, Ingredient, Product, Price, Category, Size
+from adminsortable2.admin import SortableAdminMixin
 
+class ProductCategoryListFilter(admin.SimpleListFilter):
+  title = 'Category'
+  parameter_name = 'category'
+
+  def lookups(self, request, model_admin):
+    categories = Category.objects.all()
+    categories_fields = []
+
+    for c in categories:
+      categories_fields.append([c.category_label, c.category_label])
+    return categories_fields
+
+  def queryset(self, request, queryset):
+    if self.value():
+      selected_category = Category.objects.filter(category_label = self.value())[0]
+      return queryset.filter(category = selected_category)
+    return queryset
+
+class PriceCategoryListFilter(admin.SimpleListFilter):
+  title = 'Category'
+  parameter_name = 'category'
+
+  def lookups(self, request, model_admin):
+    categories = Category.objects.all()
+    categories_fields = []
+
+    for c in categories:
+      categories_fields.append([c.category_label, c.category_label])
+    return categories_fields
+
+  def queryset(self, request, queryset):
+    if self.value():
+      selected_category = Category.objects.filter(category_label = self.value())[0]
+      return queryset.filter(product__category = selected_category)
+    return queryset
+
+@admin.register(MenuConfig)
 class MenuConfigAdmin(admin.ModelAdmin):
 
   def has_add_permission(self, request, obj=None):
@@ -19,26 +59,29 @@ class MenuConfigAdmin(admin.ModelAdmin):
 class IngredientTabularInline(admin.TabularInline):
   model = Ingredient
 
-class ProductAdmin(admin.ModelAdmin):
-  list_display = ('product_label', 'category')
+@admin.register(Product)
+class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
+  list_display = ('sort', 'product_label', 'category')
+  list_filter = (ProductCategoryListFilter,)
   inlines = [IngredientTabularInline]
 
+@admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
   list_display = ('size_label', 'category', 'amount', 'unit_label')
 
+@admin.register(Price)
 class PriceAdmin(admin.ModelAdmin):
   list_display_links = None
   list_editable = ['amount']
   list_display = ('category', 'product', 'size', 'amount')
+  list_filter = (PriceCategoryListFilter,)
   
   def has_add_permission(self, request, obj=None):
     return False
 
   def has_delete_permission(self, request, obj=None):
+    if "category" in request.__str__():
+      return True
     return False
 
-admin.site.register(MenuConfig, MenuConfigAdmin)
-admin.site.register(Price, PriceAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(Size, SizeAdmin)
 admin.site.register(Category)

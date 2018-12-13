@@ -31,6 +31,10 @@ class Product(models.Model):
   category = models.ForeignKey(Category, on_delete = models.CASCADE)
   product_label = models.CharField(max_length = 100)
   extra_info = models.TextField(max_length = 400, blank = True)
+  sort = models.PositiveIntegerField(default = 0)
+  
+  class Meta(object):
+    ordering = ['sort']
 
   def __str__(self):
     return self.product_label

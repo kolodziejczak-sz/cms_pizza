@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'colorful',
     'phonenumber_field',
     'tinymce',
+    'adminsortable2',
     'base.apps.BaseConfig',
     'menu.apps.MenuConfig',
     'gallery.apps.GalleryConfig',
@@ -138,3 +139,4 @@ PHONENUMBER_DEFAULT_REGION = "PL"
 # pip install Pillow
 # pip install django-tinymce
 # pip install django-colorful
+# pip install django-admin-sortable2
