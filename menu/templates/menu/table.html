@@ -6,5 +6,43 @@
 {% endblock %}
 
 {% block content %}
-  TABLE
+  <a href="{% url 'base:index' 'menu' %}">SEE OTHER CATEGORIES</a>
+  <header>
+    {{ viewbag.menu_cfg.menu_header | safe }}
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Lp.</th>
+        <th>Product name</th>
+        {% for s in viewbag.sizes %}
+          <th>
+            <span>{{ s.size_label }}</span>
+            <span>({{ s.amount }} {{ s.unit_label }})</span>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for p in viewbag.products %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>
+          <span>{{ p.product_label }}</span>
+          <span>
+          {% for i in p.ingredients %}
+            {{ i }}
+          {% endfor %}
+          </span>
+        </td>
+        {% for price in p.prices %}
+          <td>{{ price.amount }} {{ viewbag.menu_cfg.currency_label }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <footer>
+    {{ viewbag.menu_cfg.menu_footer | safe }}
+  </footer>
 {% endblock %}

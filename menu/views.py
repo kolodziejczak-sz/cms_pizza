@@ -2,29 +2,28 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
 
-from .models import Product, Price, Category, Size, Ingredient
+from .models import Product, Price, Category, Size, Ingredient, MenuConfig
 from base.utils import render, AttrDict
 
 def get_products_by_category(category):
   bag = []
   products = Product.objects.filter(category = category)
-  sizes = Size.objects.filter(category = category)
   for p in products:
     product = AttrDict({
       'product_label': p.product_label,
       'ingredients': Ingredient.objects.filter(product = p),
-      'sizes': sizes,
       'prices': Price.objects.filter(product = p).order_by('size')
     })
     bag.append(product)
   return bag
 
 def render_by_category(request, category):
-  return render(
-    request,
-    'menu/table.html',
-    get_products_by_category(category)
-  )
+  return render(request, 'menu/table.html', {
+    'category': category,
+    'products': get_products_by_category(category),
+    'sizes': Size.objects.filter(category = category),
+    'menu_cfg': MenuConfig.objects.all()[0]
+  })
 
 def render_categories(request):
   return render(request, 'menu/categories.html', {

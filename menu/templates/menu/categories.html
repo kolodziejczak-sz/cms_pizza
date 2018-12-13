@@ -11,7 +11,7 @@
     {% for c in viewbag.categories %}
       <div class="category">
         <a class="category__label"
-           href="{% url 'base:index' 'menu' %}?category={{c.category_label}}">
+           href="{% url 'base:index' 'menu' %}?category={{c.category_label | lower}}">
           {{ c.category_label }}
         </a>
       {% if c.photo %}
