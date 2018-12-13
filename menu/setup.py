@@ -1,9 +1,5 @@
 from .models import MenuConfig, Product, Ingredient, Price, Category, Size
-
-class AttrDict(dict):
-  def __init__(self, *args, **kwargs):
-      super(AttrDict, self).__init__(*args, **kwargs)
-      self.__dict__ = self
+from base.utils import AttrDict
 
 def make_category(name, photo_url):
   item = Category(

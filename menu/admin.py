@@ -14,7 +14,7 @@ class ProductCategoryListFilter(admin.SimpleListFilter):
     categories_fields = []
 
     for c in categories:
-      categories_fields.append([c.category_label, c.category_label])
+      categories_fields.append([c.category_label, c.category_label.lowercase()])
     return categories_fields
 
   def queryset(self, request, queryset):
@@ -32,7 +32,7 @@ class PriceCategoryListFilter(admin.SimpleListFilter):
     categories_fields = []
 
     for c in categories:
-      categories_fields.append([c.category_label, c.category_label])
+      categories_fields.append([c.category_label, c.category_label.lowercase()])
     return categories_fields
 
   def queryset(self, request, queryset):
@@ -40,6 +40,25 @@ class PriceCategoryListFilter(admin.SimpleListFilter):
       selected_category = Category.objects.filter(category_label = self.value())[0]
       return queryset.filter(product__category = selected_category)
     return queryset
+
+class SizeCategoryListFilter(admin.SimpleListFilter):
+  title = 'Category'
+  parameter_name = 'category'
+
+  def lookups(self, request, model_admin):
+    categories = Category.objects.all()
+    categories_fields = []
+
+    for c in categories:
+      categories_fields.append([c.category_label, c.category_label.lowercase()])
+    return categories_fields
+
+  def queryset(self, request, queryset):
+    if self.value():
+      selected_category = Category.objects.filter(category_label = self.value())[0]
+      return queryset.filter(category = selected_category)
+    return queryset
+
 
 @admin.register(MenuConfig)
 class MenuConfigAdmin(admin.ModelAdmin):
@@ -66,8 +85,9 @@ class ProductAdmin(SortableAdminMixin, admin.ModelAdmin):
   inlines = [IngredientTabularInline]
 
 @admin.register(Size)
-class SizeAdmin(admin.ModelAdmin):
-  list_display = ('size_label', 'category', 'amount', 'unit_label')
+class SizeAdmin(SortableAdminMixin, admin.ModelAdmin):
+  list_display = ('sort', 'size_label', 'category', 'amount', 'unit_label')
+  list_filter = (SizeCategoryListFilter,)
 
 @admin.register(Price)
 class PriceAdmin(admin.ModelAdmin):
@@ -84,4 +104,7 @@ class PriceAdmin(admin.ModelAdmin):
       return True
     return False
 
-admin.site.register(Category)
+
+@admin.register(Category)
+class CategoryAdmin(SortableAdminMixin, admin.ModelAdmin):
+  list_display = ('sort', 'category_label')

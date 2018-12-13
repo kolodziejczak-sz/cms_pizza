@@ -30,5 +30,7 @@ def render(request, templateUrl, viewbag = {}):
   #except Exception:
     #return HttpResponseServerError()
 
-
-
+class AttrDict(dict):
+  def __init__(self, *args, **kwargs):
+      super(AttrDict, self).__init__(*args, **kwargs)
+      self.__dict__ = self

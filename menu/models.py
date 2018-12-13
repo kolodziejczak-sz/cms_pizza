@@ -14,7 +14,11 @@ class MenuConfig(models.Model):
 class Category(models.Model):
   category_label = models.CharField(max_length = 100)
   photo = models.ImageField(blank = True, upload_to = 'menu')
-
+  sort = models.PositiveIntegerField(default = 0)
+  
+  class Meta(object):
+    ordering = ['sort']
+    
   def __str__(self):
     return self.category_label
 
@@ -23,6 +27,10 @@ class Size(models.Model):
   amount = models.IntegerField(blank = True)
   unit_label = models.CharField(max_length = 100, blank = True)
   size_label = models.CharField(max_length = 100)
+  sort = models.PositiveIntegerField(default = 0)
+  
+  class Meta(object):
+    ordering = ['sort']
 
   def __str__(self):
     return self.size_label

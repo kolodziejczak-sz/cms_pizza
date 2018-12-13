@@ -17,7 +17,7 @@ def news_list(request):
   page = int(request.GET.get('p', 1))
 
   items_per_page = 6
-  items_count = 13 #News.objects.all().count()
+  items_count = News.objects.all().count()
 
   pages_count = math.ceil(items_count / items_per_page)
   idxStart = ((page - 1) * items_per_page)

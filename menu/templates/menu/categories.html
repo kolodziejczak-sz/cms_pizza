@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'menu/styles/categories.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% if viewbag.categories %}
+    <section class="categories">
+    {% for c in viewbag.categories %}
+      <div class="category">
+        <a class="category__label"
+           href="{% url 'base:index' 'menu' %}?category={{c.category_label}}">
+          {{ c.category_label }}
+        </a>
+      {% if c.photo %}
+        <img class="category__photo" src="{{c.photo.url}}" alt="{{c.category_label}}"/>
+      {% endif %}
+      </div> 
+    {% endfor %}
+    </section>
+  {% endif %}
+{% endblock %}
