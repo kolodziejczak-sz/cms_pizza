@@ -9,15 +9,13 @@
   {% if viewbag.categories %}
     <section class="categories">
     {% for c in viewbag.categories %}
-      <div class="category">
-        <a class="category__label"
-           href="{% url 'base:index' 'menu' %}?category={{c.category_label | lower}}">
-          {{ c.category_label }}
-        </a>
+      <a class="category"
+         href="{% url 'base:index' 'menu' %}?category={{c.category_label | lower}}">
+        <span class="category__label">{{ c.category_label }}</span>
       {% if c.photo %}
         <img class="category__photo" src="{{c.photo.url}}" alt="{{c.category_label}}"/>
       {% endif %}
-      </div> 
+      </a> 
     {% endfor %}
     </section>
   {% endif %}

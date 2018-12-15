@@ -6,43 +6,47 @@
 {% endblock %}
 
 {% block content %}
-  <a href="{% url 'base:index' 'menu' %}">SEE OTHER CATEGORIES</a>
-  <header>
-    {{ viewbag.menu_cfg.menu_header | safe }}
-  </header>
-  <table>
-    <thead>
-      <tr>
-        <th>Lp.</th>
-        <th>Product name</th>
-        {% for s in viewbag.sizes %}
-          <th>
-            <span>{{ s.size_label }}</span>
-            <span>({{ s.amount }} {{ s.unit_label }})</span>
-          </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-    {% for p in viewbag.products %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>
-          <span>{{ p.product_label }}</span>
-          <span>
-          {% for i in p.ingredients %}
-            {{ i }}
+  <div class="menu">
+    <div class="menu__breadcrumb">
+      <a class="menu__other" href="{% url 'base:index' 'menu' %}">Categories</a>      </a>
+      <i class="icon">navigate_next</i>
+      <h2 class="menu__category">{{ viewbag.category }}</h2>
+    </div>
+    <header>
+      {{ viewbag.menu.menu_header | safe }}
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Lp.</th>
+          <th>Product name</th>
+          {% for s in viewbag.sizes %}
+            <th>
+              <div class="center">{{ s.size_label }}</div>
+              <div class="center">({{ s.amount }} {{ s.unit_label }})</div>
+            </th>
           {% endfor %}
-          </span>
-        </td>
-        {% for price in p.prices %}
-          <td>{{ price.amount }} {{ viewbag.menu_cfg.currency_label }}</td>
-        {% endfor %}
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
-  <footer>
-    {{ viewbag.menu_cfg.menu_footer | safe }}
-  </footer>
+        </tr>
+      </thead>
+      <tbody>
+      {% for p in viewbag.products %}
+        <tr>
+          <td class="number">{{ forloop.counter }}</td>
+          <td class="product">
+            <div class="product__name">{{ p.product_label }}</div>
+            <div class="product__ingredients">
+              {{ p.ingredients | join:", " }}
+            </div>
+          </td>
+          {% for price in p.prices %}
+            <td class="number">{{ price.amount }} {{ viewbag.menu.currency_label }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <footer>
+      {{ viewbag.menu.menu_footer | safe }}
+    </footer>
+  </div>
 {% endblock %}

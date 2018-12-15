@@ -1,0 +1,92 @@
+table {
+  border-collapse: collapse;
+  color: var(--text-color-1);
+  font-size: var(--normal-font-size);
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid var(--text-color-2);
+  padding: 0.75em;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--accent-color-3);
+}
+
+table tr:hover {
+  box-shadow: inset -1px -1px 5px 0px rgba(0,0,0,0.2);
+}
+
+table th {
+  background-color: var(--accent-color-2);
+  color: var(--accent-color-3);
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.number {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.center {
+  text-align: center;
+}
+
+.product {
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.product__name {
+  font-size: var(--normal-font-size);
+}
+
+.product__ingredients {
+  font-size: var(--small-font-size);
+  color: var(--text-color-2);
+}
+
+.menu {
+  padding: 1em;
+}
+
+.menu__breadcrumb {
+  align-items: center;
+  display: inline-flex;
+  color: var(--accent-color-2);
+  font-size: var(--big-font-size);
+}
+
+.menu__category {
+  display: inline-block;
+  font-size: var(--big-font-size);
+  color: var(--accent-color-2);
+}
+
+.menu__other {
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+  color: var(--accent-color-2);
+}
+
+.icon {
+  color: var(--accent-color-2);
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 .5em;
+}

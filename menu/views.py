@@ -22,7 +22,7 @@ def render_by_category(request, category):
     'category': category,
     'products': get_products_by_category(category),
     'sizes': Size.objects.filter(category = category),
-    'menu_cfg': MenuConfig.objects.all()[0]
+    'menu': MenuConfig.objects.all()[0]
   })
 
 def render_categories(request):
