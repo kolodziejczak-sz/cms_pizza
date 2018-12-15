@@ -19,3 +19,12 @@
 .photo__desc {
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .photo {
+    flex: 1 0 calc(50% - 3em);
+    box-sizing: border-box;
+    margin: .5em;
+  }
+  
+}

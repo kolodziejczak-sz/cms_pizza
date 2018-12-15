@@ -14,12 +14,12 @@ class ProductCategoryListFilter(admin.SimpleListFilter):
     categories_fields = []
 
     for c in categories:
-      categories_fields.append([c.category_label, c.category_label.lowercase()])
+      categories_fields.append([c.category_label.lower(), c.category_label])
     return categories_fields
 
   def queryset(self, request, queryset):
     if self.value():
-      selected_category = Category.objects.filter(category_label = self.value())[0]
+      selected_category = Category.objects.filter(category_label__iexact = self.value())[0]
       return queryset.filter(category = selected_category)
     return queryset
 
@@ -32,12 +32,12 @@ class PriceCategoryListFilter(admin.SimpleListFilter):
     categories_fields = []
 
     for c in categories:
-      categories_fields.append([c.category_label, c.category_label.lowercase()])
+      categories_fields.append([c.category_label.lower(), c.category_label])
     return categories_fields
 
   def queryset(self, request, queryset):
     if self.value():
-      selected_category = Category.objects.filter(category_label = self.value())[0]
+      selected_category = Category.objects.filter(category_label__iexact = self.value())[0]
       return queryset.filter(product__category = selected_category)
     return queryset
 
@@ -50,12 +50,12 @@ class SizeCategoryListFilter(admin.SimpleListFilter):
     categories_fields = []
 
     for c in categories:
-      categories_fields.append([c.category_label, c.category_label.lowercase()])
+      categories_fields.append([c.category_label.lower(), c.category_label])
     return categories_fields
 
   def queryset(self, request, queryset):
     if self.value():
-      selected_category = Category.objects.filter(category_label = self.value())[0]
+      selected_category = Category.objects.filter(category_label__iexact = self.value())[0]
       return queryset.filter(category = selected_category)
     return queryset
 

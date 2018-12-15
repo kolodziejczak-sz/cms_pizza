@@ -27,19 +27,19 @@
       </form>
       <div class="contact">
         <div class="contact__row">
-          <span class="contact__icon">location_on</span>
+          <span class="contact__icon icon">location_on</span>
           <div class="contact__text">
             <span class="bold">{{ viewbag.contact.name }}</span>
             <span>{{ viewbag.contact.city }}, {{ viewbag.contact.address }}</span>
           </div>
         </div>
         <div class="contact__row">
-          <span class="contact__icon">email</span>
+          <span class="contact__icon icon">email</span>
           <span class="contact__text">{{ viewbag.contact.email }}</span>
         </div>
         {% if viewbag.contact.telephone %}
           <div class="contact__row">
-            <span class="contact__icon">phone</span>
+            <span class="contact__icon icon">phone</span>
             <span class="contact__text">{{ viewbag.contact.telephone }}</span>
           </div>
         {% endif %}

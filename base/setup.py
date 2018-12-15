@@ -24,11 +24,11 @@ def init_config():
     cfg.save()
 
 def make_default_config():
-  home = Navigation.objects.filter(url = 'contact')[:1].get()
+  menu = Navigation.objects.filter(url = 'menu')[:1].get()
   cfg = AppConfig(
     title = 'Unititled CMS Pizzeria',
     logo_text =  'LOGO TEXT',
-    homepage = home,
+    homepage = menu,
     background_color = '#FFFFEC',
     accent_color_1 = '#CC0000',
     accent_color_2 = '#51AA51',

@@ -10,7 +10,10 @@
       {{ cfg.logo_text }}
     </span>
   </a>
+  <input id="nav-trigger" type="checkbox"/>
+  <label for="nav-trigger" class="hamburger icon">menu</label>
   <nav class="nav">
+    <label for="nav-trigger" class="nav__link hamburger icon">clear_all</label>
   {% for item in nav %}
     <a class="nav__link" href="{% url 'base:index' item.url %}">{{ item.label }}</a>
   {% endfor %}

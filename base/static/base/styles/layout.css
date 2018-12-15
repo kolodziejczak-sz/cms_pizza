@@ -1,5 +1,5 @@
 html, body {
-  min-height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +11,7 @@ html, body {
 .page {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
   margin: auto;
 }
 
@@ -19,6 +19,7 @@ html, body {
 .page__nav,
 .page__footer {
   display: flex;
+  position: relative;
 }
 
 .page__ad,
@@ -34,7 +35,6 @@ html, body {
 .page__ad + .page__content {
   margin-top: 0;
 }
-
 
 .page__footer {
   min-height: 2em;
@@ -69,4 +69,12 @@ html, body {
   rgba(255,255,255,0) 50%,
   var(--background-color) 99%,
   var(--background-color) 100%);
+}
+
+@media only screen and (max-width: 768px) {
+  .page__ad,
+  .page__content {
+    color: var(--text-color-1);
+    margin: 20px;
+  }
 }

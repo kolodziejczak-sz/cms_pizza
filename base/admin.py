@@ -30,8 +30,10 @@ class NavigationAdmin(SortableAdminMixin,admin.ModelAdmin):
 class AdAdmin(admin.ModelAdmin):
   def has_add_permission(self, request, obj=None):
     return (Ad.objects.all().count() == 0)
+    
   def has_delete_permission(self, request, obj=None):
     return (Ad.objects.all().count() == 1)
+
   def changelist_view(self, request, extra_context=None):
     if self.model.objects.all().count() == 1:
       obj = self.model.objects.all()[0]
@@ -42,7 +44,7 @@ class AdAdmin(admin.ModelAdmin):
 class AppConfigAdmin(admin.ModelAdmin):
   fieldsets = [
     ('Basic config data', {'fields': [
-      'title', 'logo_image', 'logo_text', 'favicon', 'homepage', 'currency_label'
+      'title', 'logo_image', 'logo_text', 'favicon', 'homepage'
     ]}),
     ('Design', {'fields': [
       'background_image','background_color', 'accent_color_1', 'accent_color_2', 'accent_color_3', 'text_color_1', 'text_color_2'
