@@ -30,7 +30,7 @@
       </thead>
       <tbody>
       {% for p in viewbag.products %}
-        <tr>
+        <tr tabIndex="0" attr-data="{{ p.extra_info }}">
           <td class="number">{{ forloop.counter }}</td>
           <td class="product">
             <div class="product__name">{{ p.product_label }}</div>

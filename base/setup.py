@@ -2,17 +2,16 @@ from .models import Navigation, Ad, AppConfig
 
 def init_nav():
   if(Navigation.objects.all().count() == 0):
-    make_nav('menu',1)
-    make_nav('news',2)
-    make_nav('gallery',3)
-    make_nav('contact',4)
+    make_nav('menu')
+    make_nav('news')
+    make_nav('gallery')
+    make_nav('contact')
 
-def make_nav(application, sort):
+def make_nav(application):
   item = Navigation(
     url = application, 
     label = application.capitalize(),
     subsite = None,
-    sort = sort,
     application = application
   )
   item.save()

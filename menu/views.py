@@ -11,6 +11,7 @@ def get_products_by_category(category):
   for p in products:
     product = AttrDict({
       'product_label': p.product_label,
+      'extra_info': p.extra_info,
       'ingredients': Ingredient.objects.filter(product = p),
       'prices': Price.objects.filter(product = p).order_by('size')
     })
